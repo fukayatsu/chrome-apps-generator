@@ -1,0 +1,21 @@
+.jumbotron
+  %h1 Hey!
+  %p.lead Generate Chrome App from URL
+.row.marketing
+  .col-lg-12
+    %form.form-horizontal{role: "form", action: '/download'}
+      .form-group
+        %label.col-sm-2.control-label{for: "siteUrl"} URL
+        .col-sm-10
+          %input#siteUrl.form-control{placeholder: "http://foobar", type: "url", name: 'url', required: ''}
+      .form-group
+        %label.col-sm-2.control-label{for: "inputAppName"} Name
+        .col-sm-10
+          %input#inputAppName.form-control{placeholder: "App ame", type: "text", name: 'name', required: ''}
+      .form-group
+        %label.col-sm-2.control-label{for: "description"} Description
+        .col-sm-10
+          %input#description.form-control{placeholder: "App description", type: "text", name: 'description', required: ''}
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          %button.btn.btn-success{type: "submit"} Download

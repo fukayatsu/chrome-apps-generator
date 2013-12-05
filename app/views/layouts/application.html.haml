@@ -1,0 +1,19 @@
+!!!
+%html{lang: "en"}
+  %head
+    %title ChromeAppsGenerator
+    %meta{charset: "utf-8"}/
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container
+      .header
+        %ul.nav.nav-pills.pull-right
+          %li
+            %a{href: "https://github.com/fukayatsu/chrome-apps-generator"} GitHub
+        %h3.text-muted ChromeAppsGenerator
+      = yield
+      .footer
+        %p © Company 2013 fukayatsu
