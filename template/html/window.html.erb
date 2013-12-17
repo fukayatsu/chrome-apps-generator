@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="/js/window.js"></script>
   </head>
   <body>
-    <webview src="<%= @pkg[:url] %>" partition="persist:chromeappsgenerator<%= @pkg[:key] %>" style="width:100%; height:100%;"></webview>
+    <div id="content">
+      <webview src="<%= @pkg[:url] %>" partition="persist:chromeappsgenerator<%= @pkg[:key] %>" style="width:100%; height:100%;"></webview>
+    </div>
   </body>
 </html>

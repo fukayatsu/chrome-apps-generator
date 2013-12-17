@@ -32,6 +32,9 @@ class PagesController < ApplicationController
       zio.put_next_entry("pkg/js/background.js")
       zio.write file('js/background.js')
 
+      zio.put_next_entry("pkg/js/window.js")
+      zio.write file('js/window.js')
+
       zio.put_next_entry("pkg/manifest.json")
       zio.write erb("manifest.json.erb")
 
