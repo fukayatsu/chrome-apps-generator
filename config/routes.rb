@@ -1,6 +1,6 @@
 ChromeAppsGenerator::Application.routes.draw do
   root to: "pages#index"
-  get 'download' => 'pages#download'
+  post 'download' => 'pages#download'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

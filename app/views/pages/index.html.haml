@@ -1,9 +1,13 @@
+.social-buttons
+  .fb-like{"data-action" => "like", "data-href" => "http://chrome-apps-generator.herokuapp.com/", "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "false"}
+  .tw-tweet
+    %a.twitter-share-button{"data-lang" => "en", "data-url" => "chrome-apps-generator.herokuapp.com/", "data-via" => "fukayatsu", href: "https://twitter.com/share"} Tweet
 .jumbotron
   %h1 Hey!
   %p.lead Generate Chrome App from URL
 .row.marketing
   .col-lg-12
-    %form.form-horizontal{role: "form", action: '/download'}
+    = form_tag(download_path, method: :post, multipart: true, role: 'form', class: 'form-horizontal') do
       .form-group
         %label.col-sm-2.control-label{for: "siteUrl"} URL
         .col-sm-10
@@ -16,6 +20,10 @@
         %label.col-sm-2.control-label{for: "description"} Description
         .col-sm-10
           %input#description.form-control{placeholder: "App description", type: "text", name: 'description', required: ''}
+      .form-group
+        %label.col-sm-2.control-label{for: "icon"} icon (optinal)
+        .col-sm-10
+          %input#icon{type: "file", name: 'icon' }
       .form-group
         .col-sm-offset-2.col-sm-10
           %button.btn.btn-success{type: "submit"} Download
