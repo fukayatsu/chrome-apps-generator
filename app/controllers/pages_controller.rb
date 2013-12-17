@@ -2,6 +2,7 @@ require 'zip'
 
 class PagesController < ApplicationController
   def index
+    @generated_count = REDIS[:generated_count]
   end
 
   def download
@@ -61,6 +62,9 @@ class PagesController < ApplicationController
       zio.write erb("manifest.json.erb")
 
     end
+
+    REDIS.incr :generated_count
+
     stringio.rewind
     stringio.sysread
   end
