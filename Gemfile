@@ -52,6 +52,7 @@ gem "haml-rails"
 gem "unicorn"
 gem "anjlab-bootstrap-rails", ">= 3.0.0.0", require: "bootstrap-rails"
 gem 'rubyzip'
+gem 'mini_magick'
 
 group :production do
   gem "pg"

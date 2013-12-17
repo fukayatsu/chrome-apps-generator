@@ -17,6 +17,18 @@ class PagesController < ApplicationController
 
   # TODO cleanup code
   def generate_package(package_data)
+
+    image = nil
+    if params[:icon]
+      image = MiniMagick::Image.read(params[:icon])
+      short_side = [image[:width], image[:height]].min
+      image.combine_options do |c|
+        c.gravity :center
+        c.crop    "#{short_side}x#{short_side}+0+0"
+      end
+      image.format "png"
+    end
+
     @pkg = package_data
 
     stringio = Zip::OutputStream::write_buffer do |zio|
@@ -24,10 +36,20 @@ class PagesController < ApplicationController
       zio.write erb("html/window.html.erb")
 
       zio.put_next_entry("pkg/image/icon_128.png")
-      zio.write file('image/icon_128.png')
+      if image
+        image.resize "128x128"
+        zio.write image.to_blob
+      else
+        zio.write file('image/icon_128.png')
+      end
 
       zio.put_next_entry("pkg/image/icon_16.png")
-      zio.write file('image/icon_16.png')
+      if image
+        image.resize "16x16"
+        zio.write image.to_blob
+      else
+        zio.write file('image/icon_16.png')
+      end
 
       zio.put_next_entry("pkg/js/background.js")
       zio.write file('js/background.js')
